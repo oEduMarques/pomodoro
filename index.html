@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en, pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -13,12 +13,11 @@
         <div>
             <button id="btn-start">Start</button>
             <button id="btn-pause">Pause</button>
-            <button id="btn-reset">Reset</button>
         </div>
-        <div id="btn-mode" class="btn-mode">
-            <button data-time="1500">Pomodoro</button>
-            <button data-time="300">Short Break</button>
-            <button data-time="900">Long Break</button>
+        <div class="btn-mode">
+            <button data-time="1500" id="btn-pomodoro">Pomodoro</button>
+            <button data-time="300" id="btn-short">Short Break</button>
+            <button data-time="900" id="btn-long">Long Break</button>
         </div>        
     </section>
     <script src="script.js" defer></script>

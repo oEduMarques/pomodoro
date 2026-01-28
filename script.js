@@ -1,8 +1,10 @@
-let timerDisplay = document.getElementById('timer-display');
-let btnStart = document.getElementById('btn-start');
-let btnPause = document.getElementById('btn-pause');
-let btnReset = document.getElementById('btn-reset');
-let btnMode = document.getElementById('btn-mode');
+const timerDisplay = document.getElementById('timer-display');
+const btnStart = document.getElementById('btn-start');
+const btnPause = document.getElementById('btn-pause');
+const btnMode = document.getElementById('btn-mode');
+const btnPomodoro = document.getElementById('btn-pomodoro');
+const btnShortBreak = document.getElementById('btn-short');
+const btnLongBreak = document.getElementById('btn-long');
 
 let timeLeft = 1500;
 let timerId = null;
@@ -40,10 +42,10 @@ function pauseTimer() {
     timerId = null;
 }
 
-function resetTimer() {
-    clearInterval(timerId);
-    timerId = null;
-    timeLeft = 1500;
+function switchMode(seconds){
+    updateTimer();
+    pauseTimer();
+    timeLeft = seconds;
     updateTimer();
 }
 
@@ -55,6 +57,14 @@ btnPause.addEventListener('click', () => {
     pauseTimer()
 });
 
-btnReset.addEventListener('click', () => {
-    resetTimer()
+btnPomodoro.addEventListener('click', ()=> {
+    switchMode(1500);
+});
+
+btnShortBreak.addEventListener('click', ()=> {
+    switchMode(300);
+});
+
+btnLongBreak.addEventListener('click', ()=> {
+    switchMode(900);
 });
