@@ -19,6 +19,42 @@ function updateTimer(){
     timerDisplay.textContent = timeFormatted;
 }
 
+function startTimer() {
+    if (timerId !== null) return;
+
+    timerId = setInterval(() => {
+        timeLeft--;
+        updateTimer();
+        console.log(timerId);
+
+        if (timeLeft === 0) {
+            clearInterval(timerId);
+            timerId = null;
+            alert("Tempo esgotado!");
+        }
+    }, 1000)
+}
+
+function pauseTimer() {
+    clearInterval(timerId);
+    timerId = null;
+}
+
+function resetTimer() {
+    clearInterval(timerId);
+    timerId = null;
+    timeLeft = 1500;
+    updateTimer();
+}
+
 btnStart.addEventListener('click', () => {
-    updateTimer()
-})
+    startTimer()
+});
+
+btnPause.addEventListener('click', () => {
+    pauseTimer()
+});
+
+btnReset.addEventListener('click', () => {
+    resetTimer()
+});
