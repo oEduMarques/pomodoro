@@ -1,6 +1,6 @@
 const timerDisplay = document.getElementById('timer-display');
 const btnStart = document.getElementById('btn-start');
-const btnPause = document.getElementById('btn-pause');
+const btnControlTimer = document.getElementById('btn-control-timer');
 const btnMode = document.getElementById('btn-mode');
 const btnPomodoro = document.getElementById('btn-pomodoro');
 const btnShortBreak = document.getElementById('btn-short');
@@ -23,23 +23,40 @@ function updateTimer(){
 
 function startTimer() {
     if (timerId !== null) return;
-
+    
     timerId = setInterval(() => {
+
+        if(timeLeft <= 0) {
+            clearInterval(timerId)
+            timerId = null;
+            return;
+        }
+
         timeLeft--;
         updateTimer();
-        console.log(timerId);
-
+        
         if (timeLeft === 0) {
             clearInterval(timerId);
             timerId = null;
-            alert("Tempo esgotado!");
+            btnControlTimer.textContent = "Start";
+            alert("Time finish! Stop now and relax!");
         }
-    }, 1000)
+    }, 1)
 }
 
 function pauseTimer() {
     clearInterval(timerId);
     timerId = null;
+}
+
+function controlTimer() {
+    if (timerId === null) {
+        startTimer();
+        btnControlTimer.textContent = "Pause";
+    } else {
+        pauseTimer();
+        btnControlTimer.textContent = "Start";
+    }
 }
 
 function switchMode(seconds){
@@ -49,12 +66,8 @@ function switchMode(seconds){
     updateTimer();
 }
 
-btnStart.addEventListener('click', () => {
-    startTimer()
-});
-
-btnPause.addEventListener('click', () => {
-    pauseTimer()
+btnControlTimer.addEventListener('click', () => {
+    controlTimer()
 });
 
 btnPomodoro.addEventListener('click', ()=> {
