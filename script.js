@@ -5,6 +5,12 @@ const btnMode = document.getElementById('btn-mode');
 const btnPomodoro = document.getElementById('btn-pomodoro');
 const btnShortBreak = document.getElementById('btn-short');
 const btnLongBreak = document.getElementById('btn-long');
+let currentModeTime = 1500;
+const messages = {
+    1500: "Focus session complete! Time for a short break. ☕",
+    300: "Short break is over! Ready to get back to work? 💪",
+    900: "Long break finished! Time to crush your goals! 🚀"
+};
 
 let timeLeft = 1500;
 let timerId = null;
@@ -39,7 +45,8 @@ function startTimer() {
             clearInterval(timerId);
             timerId = null;
             btnControlTimer.textContent = "Start";
-            alert("Time finish! Stop now and relax!");
+            const msg = messages[currentModeTime] || "Tempo esgotado!";
+            alert(msg);
         }
     }, 1)
 }
@@ -60,8 +67,8 @@ function controlTimer() {
 }
 
 function switchMode(seconds){
-    updateTimer();
     pauseTimer();
+    currentModeTime = seconds;
     timeLeft = seconds;
     updateTimer();
 }
