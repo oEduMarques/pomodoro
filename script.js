@@ -45,8 +45,9 @@ function startTimer() {
             clearInterval(timerId);
             timerId = null;
             btnControlTimer.textContent = "Start";
-            const msg = messages[currentModeTime] || "Tempo esgotado!";
+            const msg = messages[currentModeTime] || "Time is up!";
             alert(msg);
+            window.dispatchEvent(new Event('stopAllSounds'));
         }
     }, 1)
 }
