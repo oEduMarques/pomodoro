@@ -3,7 +3,8 @@ const fireSound = new Audio('sounds/fire.mp3');
 const natureSound = new Audio('sounds/nature-ambience.mp3');
 const thunderSound = new Audio('sounds/thunder-norain.mp3');
 const waterFallSound = new Audio('sounds/waterfall.mp3');
-const allSounds = [rainSound, fireSound, natureSound, thunderSound, waterFallSound]
+
+const allSounds = [rainSound, fireSound, natureSound, thunderSound, waterFallSound, alarmBell]
 
 const soundMap = [
     { slider: 'rain-slider', audio: rainSound },
@@ -20,7 +21,6 @@ allSounds.forEach(sound => {
 soundMap.forEach(item => {
     const sliderElement = document.getElementById(item.slider);
     
-    // Verifica se o slider existe no HTML para não dar erro
     if (sliderElement) {
         sliderElement.addEventListener('input', () => {
             const vol = sliderElement.value;
@@ -32,7 +32,6 @@ soundMap.forEach(item => {
 });
 
 
-// 3. A MÁGICA: Escutar o evento do script.js para parar tudo
 window.addEventListener('stopAllSounds', () => {
     soundMap.forEach(item => {
         item.audio.pause();
@@ -40,4 +39,6 @@ window.addEventListener('stopAllSounds', () => {
         const sliderElement = document.getElementById(item.slider);
         if (sliderElement) sliderElement.value = 0;
     });
+
+    alarmBell.play();
 });

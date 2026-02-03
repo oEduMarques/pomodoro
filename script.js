@@ -5,6 +5,8 @@ const btnMode = document.getElementById('btn-mode');
 const btnPomodoro = document.getElementById('btn-pomodoro');
 const btnShortBreak = document.getElementById('btn-short');
 const btnLongBreak = document.getElementById('btn-long');
+const alarmBell = new Audio('sounds/bell.mp3');
+alarmBell.volume = 0.5;
 let currentModeTime = 1500;
 const messages = {
     1500: "Focus session complete! Time for a short break. ☕",
@@ -45,13 +47,16 @@ function startTimer() {
             clearInterval(timerId);
             timerId = null;
             btnControlTimer.textContent = "Start";
+            alarmBell.play();
             const msg = messages[currentModeTime] || "Time is up!";
             alert(msg);
             window.dispatchEvent(new Event('stopAllSounds'));
+            alarmBell.pause();
+            alarmBell.currentTime = 0;
         }
     }, 1)
 }
-
+ 
 function pauseTimer() {
     clearInterval(timerId);
     timerId = null;
@@ -68,6 +73,7 @@ function controlTimer() {
 }
 
 function switchMode(seconds){
+    btnControlTimer.textContent = "Start";
     pauseTimer();
     currentModeTime = seconds;
     timeLeft = seconds;
