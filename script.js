@@ -54,7 +54,7 @@ function startTimer() {
             alarmBell.pause();
             alarmBell.currentTime = 0;
         }
-    }, 1)
+    }, 1000)
 }
  
 function pauseTimer() {
