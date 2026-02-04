@@ -5,7 +5,6 @@
     box-sizing: border-box;
 }
 
-/* Centraliza tudo e usa as cores do Pomodoro */
 body {
     background-color: #074001;
     color: white;
@@ -16,7 +15,6 @@ body {
     padding: 50px;
 }
 
-/* Container do Timer */
 #timer-display {
     font-size: 10rem;
     font-weight: bold;
@@ -57,7 +55,6 @@ body {
     background: rgba(255, 255, 255, 0.1);
 }
 
-/* Container dos Sons (Mixer) */
 .mixer-container {
     background: rgba(0, 0, 0, 0.1);
     padding: 20px;
@@ -80,7 +77,6 @@ body {
     margin-bottom: 10px;
 }
 
-/* Estilo do Slider */
 input[type=range] {
     cursor: pointer;
     accent-color: #ffffff;
