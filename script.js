@@ -6,6 +6,7 @@ const btnPomodoro = document.getElementById('btn-pomodoro');
 const btnShortBreak = document.getElementById('btn-short');
 const btnLongBreak = document.getElementById('btn-long');
 const alarmBell = new Audio('sounds/bell.mp3');
+const titleTimer = document.getElementById("title-timer");
 alarmBell.volume = 0.5;
 let currentModeTime = 1500;
 const messages = {
@@ -27,6 +28,7 @@ function updateTimer(){
     let timeFormatted = `${minutesStr}:${secondsStr}`;
 
     timerDisplay.textContent = timeFormatted;
+    updateTabTitle();
 }
 
 function startTimer() {
@@ -78,6 +80,14 @@ function switchMode(seconds){
     currentModeTime = seconds;
     timeLeft = seconds;
     updateTimer();
+}
+
+function updateTabTitle(){
+    const minutes = Math.floor(timeLeft / 60);
+    const seconds = timeLeft % 60;
+    const timeString = `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
+
+    document.title = `${timeString} - Gi Pomodoro`
 }
 
 btnControlTimer.addEventListener('click', () => {
