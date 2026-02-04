@@ -1,23 +1,29 @@
-# pomodoro# 🍅 Focus Pomodoro & Ambient Mixer
+# ⏳ Gi Pomodoro & Ambient Mixer
 
-A modern, web-based Pomodoro Timer designed to enhance productivity through focus sessions and customizable ambient soundscapes. Built with a minimalist UI and event-driven JavaScript architecture.
+A professional productivity web application designed for deep focus sessions. This project combines a classic Pomodoro timer with a customizable ambient sound mixer and real-time session tracking.
 
 ## 🚀 Live Demo
 You can access the project here: https://oedumarques.github.io/pomodoro/
 
-## 🛠️ Technologies Used
-- **HTML5:** Semantic structure.
-- **CSS3:** Custom styling with Flexbox and Glassmorphism effects.
-- **JavaScript (Vanilla):** Core logic, Web Audio API, and Custom Events for inter-script communication.
+## ✨ New Features
+- **Session Tracking:** Real-time counters for Total Focus and Total Break time during the current session.
+- **Dynamic Tab Title:** View the remaining time directly in the browser tab, even when paused.
+- **SVG Favicon:** Integrated hourglass emoji (⏳) as a favicon using SVG data URI for a clean, zero-asset UI.
+- **Ambient Sound Mixer:** Mix multiple sounds (Rain, Fire, Nature, Thunder, Waterfall) with independent volume control.
+- **Smart Audio Engine:** All background sounds automatically stop when the timer finishes.
+
+## 🛠️ Technical Highlights
+- **Architecture:** Decoupled logic using Custom Events to communicate between the Timer and Audio engines.
+- **DOM Manipulation:** High-performance UI updates using `setInterval` and `padStart` for time formatting.
+- **Responsive Layout:** Mobile-first design focusing on large, accessible touch targets for timer controls.
 
 ## 📂 Project Structure
-- `index.html`: Main structure and UI components.
-- `script.js`: Core Pomodoro logic and timer management.
-- `soundScript.js`: Independent audio engine and sound mixer logic.
-- `style.css`: Visual styling and responsive layout.
-- `/sounds`: High-quality audio assets (.m4a and .mp3).
-
-## 🧑‍💻 Author
-**Eduardo Marques**
-- Computer Science Student at UniRitter (Graduating July 2026).
-- Passionate about Data Science, AI, and Full Stack Development.
+```text
+pomodoro-app/
+├── index.html          # Main structure & Meta tags
+├── css/
+│   └── style.css       # Layout & Glassmorphism effects
+├── js/
+│   ├── script.js       # Core Timer & Accumulator logic
+│   └── soundScript.js  # Audio Mixer & Event listeners
+└── sounds/             # High-quality audio assets (.m4a/.mp3)
