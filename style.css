@@ -7,7 +7,7 @@
 
 /* Centraliza tudo e usa as cores do Pomodoro */
 body {
-    background-color: #bc2efd;
+    background-color: #55aa4c;
     color: white;
     font-family: 'Segoe UI', sans-serif;
     display: flex;
@@ -27,7 +27,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color:#aa2ce4;
+    background: rgba(0, 0, 0, 0.1);
     border: none;
     border-radius: 2px;
     padding: 10px;
@@ -39,11 +39,11 @@ body {
 }
 
 #btn-control-timer:hover {
-    background-color:#8019af;
+    background: rgba(255, 255, 255, 0.1);
 }
 
 .btn-mode{
-    background-color:#aa2ce4;
+    background: rgba(0, 0, 0, 0.1);
     border: none;
     border-radius: 2px;
     padding: 10px;
@@ -51,6 +51,10 @@ body {
     font-weight: bold;
     color: white;
     cursor: pointer;
+}
+
+.btn-mode:hover {
+    background: rgba(255, 255, 255, 0.1);
 }
 
 /* Container dos Sons (Mixer) */
