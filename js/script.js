@@ -5,10 +5,14 @@ const btnMode = document.getElementById('btn-mode');
 const btnPomodoro = document.getElementById('btn-pomodoro');
 const btnShortBreak = document.getElementById('btn-short');
 const btnLongBreak = document.getElementById('btn-long');
-const alarmBell = new Audio('sounds/bell.mp3');
 const titleTimer = document.getElementById("title-timer");
+const totalFocusDisplay = document.getElementById('total-focus');
+const totalBreakDisplay = document.getElementById('total-break');
+const alarmBell = new Audio('sounds/bell.mp3');
 alarmBell.volume = 0.5;
 let currentModeTime = 1500;
+let totalFocusSeconds = 0;
+let totalBreakSeconds = 0;
 const messages = {
     1500: "Focus session complete! Time for a short break. ☕",
     300: "Short break is over! Ready to get back to work? 💪",
@@ -31,6 +35,21 @@ function updateTimer(){
     updateTabTitle();
 }
 
+function formatTotalTime(seconds) {
+    const h = Math.floor(seconds / 3600);
+    const m = Math.floor((seconds % 3600) / 60);
+    const s = seconds % 60;
+
+    if (h > 0) {
+        return h + 'h ' + m + 'm ';
+    } else {
+        let minutesStr = String(m).padStart(2, '0');
+        let secondsStr = String(s).padStart(2, '0');
+
+        return minutesStr + ':' + secondsStr;
+    }
+}
+
 function startTimer() {
     if (timerId !== null) return;
     
@@ -43,6 +62,16 @@ function startTimer() {
         }
 
         timeLeft--;
+
+        if (currentModeTime === 1500) {
+            totalFocusSeconds++;
+            console.log(totalFocusSeconds)
+            totalFocusDisplay.textContent = `Total focus 💪: ${formatTotalTime(totalFocusSeconds)}`;
+        } else {
+            totalBreakSeconds++;
+            totalBreakDisplay.textContent = `Total break ☕: ${formatTotalTime(totalBreakSeconds)}`;
+        }
+
         updateTimer();
         
         if (timeLeft === 0) {
