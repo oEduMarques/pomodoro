@@ -7,7 +7,7 @@
 
 /* Centraliza tudo e usa as cores do Pomodoro */
 body {
-    background-color: #55aa4c;
+    background-color: #074001;
     color: white;
     font-family: 'Segoe UI', sans-serif;
     display: flex;
@@ -27,7 +27,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    background: rgba(0, 0, 0, 0.1);
+    background: rgba(0, 0, 0, 0.1); 
     border: none;
     border-radius: 2px;
     padding: 10px;
