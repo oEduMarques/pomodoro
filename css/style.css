@@ -40,6 +40,10 @@ body {
     background: rgba(255, 255, 255, 0.1);
 }
 
+.btns-mode{
+
+}
+
 .btn-mode{
     background: rgba(0, 0, 0, 0.1);
     border: none;
@@ -91,3 +95,38 @@ input[type=range] {
     cursor: pointer;
     accent-color: #ffffff;
 }
+
+@media (max-width: 600px) {
+    section {
+        width: 90%;
+        padding: 10px;
+    }
+    #timer-display {
+        font-size: 4rem; 
+        display: flex;
+        justify-content: center;
+        margin: 3vh;
+    }
+
+    .btns-mode {
+        display: flex;
+        flex-direction: row; 
+        justify-content: center;
+        gap: 1vh;
+        width: 100%;
+    }
+    .btn-mode {
+        width: 100%;
+        padding: 15px;
+    }
+
+    .mixer-section{
+        width: 100%;
+        display: flex;
+        justify-content: center;
+    }
+
+    .sound-controls {
+        grid-template-columns: 1fr;
+    }
+} 
